@@ -2,3 +2,4 @@ __pycache__/
 *.py[cod]
 Tracker.Log
 .installer_config
+tagtracker-venv/
