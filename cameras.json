@@ -3,8 +3,8 @@
         
         {
             "name": "USB Webcam",
-            "type": "Thinkpad_T430",
-            "port": 2,
+            "type": "Shit_USB_Camera",
+            "port": 0,
             "robot_pose": [
                 [1, 0, 0, 0.5],
                 [0, -1, 0, 0],

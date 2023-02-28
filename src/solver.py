@@ -92,7 +92,7 @@ class RobotPoseSolver:
 			# Convert to numpy arrarys for math
 			estimated_pose = np.array(estimated_pose)
 			camera_pose = np.array(camera_pose)
-			tag_pose = np.array(tag_pose)
+			tag_pose = np.array(tag_pose).reshape(4,4)
 
 			# Scale estimated position by tag size
 			size = tag_dict['size']
@@ -102,6 +102,17 @@ class RobotPoseSolver:
 
 			# Find where the camera is if the tag is at the origin
 			tag_relative_camera_pose = invert(estimated_pose)
+
+			print("tag_relative_camera_pose")
+			for x in range(len(tag_relative_camera_pose)-1):
+				for y in range(len(tag_relative_camera_pose[x]) - 1):
+					print(str(tag_relative_camera_pose[x][y]) + ", ", end="")
+				print()
+
+			print("tag_pose")
+			for x in range(len(tag_pose) - 1):
+				print(str(tag_pose[x]) + ", ", end='')
+				print()
 
 			# Find the camera position relative to the tag position
 			world_camera_pose = np.matmul(tag_pose, tag_relative_camera_pose)
