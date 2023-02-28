@@ -78,14 +78,14 @@ def main():
         retval, corners = cv2.findChessboardCorners(gray, patternsize, None)
 
         if retval:
-            # print('checkerboard acquired!')
+            print('checkerboard acquired!')
             # Refine corners (apriltags devs forgot this)
             refined = cv2.cornerSubPix(gray, corners, (11,11), (-1,-1), criteria)
             ipoints.append(refined)
 
             cv2.drawChessboardCorners(rgb, patternsize, refined, retval)
         else:
-            # print('warning: no chessboard found, skipping')
+            print('warning: no chessboard found, skipping')
             # print('nothing found')
             pass
 
@@ -94,7 +94,7 @@ def main():
         cv2.imshow("Image", rgb)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+           break
 
     print (f'got {len(ipoints)} points')
     if options.max_images != 0 and len(ipoints) > options.max_images:
